@@ -9,7 +9,7 @@
     --gray: #e5e5e5;
     --white: #ffffff;
     --soft-black: #282828;
-
+    --green: #307351;
 }
 
 * {
@@ -24,7 +24,6 @@ html {
 img {
     max-width: 100%;
     height: auto; /* make sure images are scaled correctly */
-    background-color: var(--white);
 }
 
 body {
@@ -34,7 +33,7 @@ body {
 }
 
 header {
-    background-color: var(--dark);
+    background-color: var(--dark-blue);
 }
 
 .header-wrapper {
@@ -43,7 +42,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0.8rem 0;
-    width: 100%;
+    margin: 0;
 }
 
 .search-input-container {
@@ -64,15 +63,15 @@ width: 100%;
 height: 15px;
 padding: 10px;
 transition: .2s linear;
-border: 2.5px solid var(--light-red);
+border: 2.5px solid var(--light-blue);
 font-size: 14px;
 letter-spacing: 2px;
 }
 
 .input:focus {
 outline: none;
-border: 0.5px solid var(--light-red);
-box-shadow: -5px -5px 0px var(--light-red);
+border: 0.5px solid var(--light-blue);
+box-shadow: -5px -5px 0px var(--light-blue);
 }
 
 .input-container:hover > .icon {
@@ -107,7 +106,7 @@ animation: anim 1s linear infinite;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    background-color: var(--dark-red);
+    background-color: var(--white-green);
     padding: 0.8rem;
     /* sombra al borde inferior */
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1)
@@ -115,7 +114,7 @@ animation: anim 1s linear infinite;
 
 .navbar a {
     text-decoration: none;
-    color: var(--white);
+    color: var(--dark-blue);
     font-size: 1.6rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
@@ -123,7 +122,7 @@ animation: anim 1s linear infinite;
 }
 
 .navbar a:hover {
-    color: var(--dark-blue);
+    color: var(--light-red);
     /* cool transition */
     transition: all 0.2s ease-in-out;
 }
@@ -132,7 +131,7 @@ main h1, main h2 {
     font-size: 3rem;
     font-weight: 600;
     margin: 4rem 10rem;
-    background-color: var(--dark-red);
+    background-color: var(--soft-blue);
     color: var(--white);
     letter-spacing: 0.1rem;
     padding: 1.5rem;
