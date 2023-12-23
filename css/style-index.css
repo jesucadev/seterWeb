@@ -18,6 +18,7 @@
     font-family: 'Krub', sans-serif, 'Roboto', Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* para que el padding y el border no afecten al tamaño del elemento */
 }
 
 html {
@@ -197,24 +198,6 @@ main h1, main h2 {
     justify-content: center;
     margin: 0 10rem;
     gap: 3rem;
-}
-
-.brand img {
-    width: 20rem;
-    height: 10rem;
-    align-items: center;
-}
-
-.brand {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-}
-
-.brand a {
-    text-decoration: none;
 }
 
 .branch-offices {
