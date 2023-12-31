@@ -1,6 +1,5 @@
 @include('plantillas.navBar')
-@section('title','About Us')
-@endsection 
+
 <main>
     <link rel="stylesheet" href="{{ asset('css/aboutUs.css') }}">
     <section class="container" id="aboutus">

@@ -2,35 +2,47 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\BrandController;
 
 //URL Index
 Route::view('/', 'index')->name('index');
 //URL Product
 Route::view('/products', 'productos')->name('products');
 //URL Brands
-Route::view('/brands', 'marcas')->name('brands');
+Route::view('/brands', 'brands')->name('brands');
 //URL AboutUs
 Route::view('/aboutus', 'aboutus')->name('aboutus');
-//URL Product Form
-Route::view('/productForm', 'productForm')->name('productForm');
 //URL LogIn
 Route::view('/login', 'login')->name('login');
 //URL SignUp
 Route::view('/signup', 'signUp')->name('signUp');
+//URL Cotizar
+Route::view('/cotizar', 'cotizar')->name('cotizar');
+//URL Añadir Product Form
+Route::view('/addProduct', 'productForm')->name('productForm');
+//URL Detalle de producto
+Route::view('/productDetail', 'productDetail')->name('productDetail');
+
+
+Route::get('/products', [ProductController::class, 'index']) ->name('products');
+Route::post('/addProduct', [ProductController::class, 'store']) ->name('addProduct');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('productDetail');
+Route::get('/productForm/{id?}', [ProductController::class, 'showProductForm'])->name('productForm');
+
+// ¡¡ No logro que me respete la vista de products !!
+Route::get('/products/brand/{marca}', [BrandController::class, 'index'])->name('products.brand');
 
 
 
-Route::get('/addProduct', [ProductController::class, 'create']);
-Route::get('/productList', [ProductController::class, 'index']);
+Route::post('/login', [UsuarioController::class, 'index']) ->name('login');
+Route::post('/signup', [UsuarioController::class, 'store']) ->name('signUp');
 
-Route::get('/login', [UsuarioController::class, 'index']);
-Route::get('/signup', [UsuarioController::class, 'create']);
-
+/* 
 
 
-// Route::get('brands', fn() => view('marcas')) -> name ('brands');
+Route::get('brands', fn() => view('marcas')) -> name ('brands');
 
-/* Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 */

@@ -4,12 +4,20 @@
 <main>
     <div class="productForm">
         <div class="heading">Iniciar sesión</div>
-        <form action="" class="form">
+        <form action="{{ route('login')}}" class="form" method="post">
+            @csrf
+
             <label for="email"> Correo electronico: </label>
             <input class="input" type="email" name="email" id="email" required>
+            @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
             <label for="pwd"> Contraseña </label>
             <input class="input" type="password" name="pwd" id="pwd" required maxlength="25" minlength="8">
+            @error('pwd')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
             <input class="add-button" type="submit" value="Iniciar sesión">
             <a class="log-form" href="signup">Registrarse</a>
