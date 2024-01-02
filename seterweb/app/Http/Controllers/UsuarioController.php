@@ -56,37 +56,4 @@ class UsuarioController extends Controller
 
         return redirect()->route('login')->with('success', '¡Usuario registrado con éxito!');
     }
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(usuario $usuario)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(usuario $usuario)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, usuario $usuario)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(usuario $usuario)
-    {
-        //
-    }
 }

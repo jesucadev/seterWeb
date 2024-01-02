@@ -27,19 +27,16 @@ Route::view('/productDetail', 'productDetail')->name('productDetail');
 Route::get('/products', [ProductController::class, 'index']) ->name('products');
 Route::post('/addProduct', [ProductController::class, 'store']) ->name('addProduct');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('productDetail');
-Route::get('/productForm/{id?}', [ProductController::class, 'showProductForm'])->name('productForm');
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
 
-// ¡¡ No logro que me respete la vista de products !!
 Route::get('/products/brand/{marca}', [BrandController::class, 'index'])->name('products.brand');
-
-
 
 Route::post('/login', [UsuarioController::class, 'index']) ->name('login');
 Route::post('/signup', [UsuarioController::class, 'store']) ->name('signUp');
 
 /* 
-
-
 Route::get('brands', fn() => view('marcas')) -> name ('brands');
 
 Route::get('/', function () {

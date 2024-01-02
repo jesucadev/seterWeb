@@ -23,12 +23,13 @@
                 <!-- Plantilla para producto -->
                 <div class="card">
                     <!-- Imagen del producto -->
-                    <img src="{{ asset('storage/product_images/' . $producto->imagen) }}" alt="Imagen del producto">
+                    <img src="{{ asset('storage/' . $producto->imagen) }}" alt="Imagen del producto">
+
+
     
                     <div class="card-content">
-                        <!-- Nombre del producto -->
+
                         <h2>{{ $producto->nombre }}</h2>
-                        <!-- Descripción del producto -->
                         <p>{{ $producto->descripcion }}</p>
                         <a href="{{ route('productDetail', ['id' => $producto->id]) }}" class="button">Ver más</a>
                     </div>

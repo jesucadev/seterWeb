@@ -52,6 +52,8 @@ class ProductController extends Controller
         // Procesar la imagen si se proporciona
         if ($request->hasFile('inputImagen')) {
             $imagenPath = $request->file('inputImagen')->store('public/product_images');
+            // Almacena la ruta relativa en lugar de la ruta completa
+            $imagenPath = str_replace('public/', '', $imagenPath);
         } else {
             $imagenPath = null;
         }
@@ -87,6 +89,15 @@ class ProductController extends Controller
     }
 
     /**
+     * Edit the specified resource.
+     */
+    public function edit($id)
+    {
+        $producto = Product::findOrFail($id);
+        return view('editProduct', compact('producto'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function showProductForm($id = null)
@@ -95,11 +106,11 @@ class ProductController extends Controller
         $producto = $id ? Product::findOrFail($id) : null;
 
         // Si no se encuentra el producto, redirige con un mensaje de error
-        if (!$producto) {
+        try {
+            $producto = $id ? Product::findOrFail($id) : null;
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return redirect()->route('products')->with('error', 'Producto no encontrado');
         }
-
-        return view('productForm', compact('producto'));
     }
 
     /**
@@ -149,20 +160,32 @@ class ProductController extends Controller
             }
 
             $imagenPath = $request->file('inputImagen')->store('public/product_images');
-            $product->imagen = $imagenPath;
+            $product->imagen = str_replace('public/', '', $imagenPath);
         }
 
         // Guardar los cambios
         $product->save();
 
-        return redirect()->route('products.show', ['id' => $id])->with('success', '¡Producto actualizado con éxito!');
+        return redirect()->route('productDetail', ['id' => $id])->with('success', '¡Producto actualizado con éxito!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(product $product)
+    public function destroy($id)
     {
-        //
+        // Busca el producto por ID
+        $product = Product::findOrFail($id);
+
+        // Elimina la imagen asociada si existe
+        if ($product->imagen) {
+            Storage::delete($product->imagen);
+        }
+
+        // Elimina el producto de la base de datos
+        $product->delete();
+
+        // Redirige a la página de productos o a donde desees
+        return redirect()->route('products')->with('success', '¡Producto eliminado con éxito!');
     }
 }

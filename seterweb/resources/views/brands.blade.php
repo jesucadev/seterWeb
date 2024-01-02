@@ -7,7 +7,7 @@
             <a href="{{ route('products.brand', ['marca' => 'SETER']) }}">
                 <div class="card">
                     <div class="card__img"> 
-                        <img src="img/LogoSeterBlanco.png" alt="Logo SETER">
+                        <img src="img/LogoSeter.png" alt="Logo SETER">
                     </div>
         
                     <div class="card__wrapper">

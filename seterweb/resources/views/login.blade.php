@@ -1,7 +1,7 @@
 @include('plantillas.navBar')
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 
-<main>
+<main style="margin-bottom: 5.4rem">
     <div class="productForm">
         <div class="heading">Iniciar sesión</div>
         <form action="{{ route('login')}}" class="form" method="post">
@@ -16,7 +16,7 @@
             <label for="pwd"> Contraseña </label>
             <input class="input" type="password" name="pwd" id="pwd" required maxlength="25" minlength="8">
             @error('pwd')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <a class="log-form" href="{{ route('signUp') }}">Registrarse</a>
             @enderror
 
             <input class="add-button" type="submit" value="Iniciar sesión">
